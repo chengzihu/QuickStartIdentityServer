@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStartIdentityServer", "QuickStartIdentityServer\QuickStartIdentityServer.csproj", "{55AD9FC2-E9E6-43A1-B5E9-EA0B10C7878F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStartIdentityMVC", "QuickStartIdentityMVC\QuickStartIdentityMVC.csproj", "{FE33B809-8F00-4EBA-9870-46A849BABC13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{55AD9FC2-E9E6-43A1-B5E9-EA0B10C7878F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55AD9FC2-E9E6-43A1-B5E9-EA0B10C7878F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55AD9FC2-E9E6-43A1-B5E9-EA0B10C7878F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
