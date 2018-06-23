@@ -31,6 +31,7 @@ namespace QuickStartIdentityMVC.Controllers
             {
                 new Claim(ClaimTypes.Name,"lmc"),
                 new Claim(ClaimTypes.Role, "admin")
+                //new Claim("SuperAdminOnly","true")
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecreKey));  //将appsettings里面的SecreKey拿到
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);             //使用HmacSha256 算法加密

@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -45,19 +47,46 @@ namespace QuickStartIdentityMVC
             //     });
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings")); //appsettings中读取到jwtsettings节点
-            var jwtSetting = new JwtSettings();
-            Configuration.Bind("JwtSettings", jwtSetting);
-            services.AddAuthentication(options =>
-            {                                   // 添加认证头
-                             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(jo => jo.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+            //jwt
+            //services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings")); //appsettings中读取到jwtsettings节点
+            //var jwtSetting = new JwtSettings();
+            //Configuration.Bind("JwtSettings", jwtSetting);
+            //services.AddAuthentication(options =>
+            //{                                   // 添加认证头
+            //                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(jo => jo.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+            //{
+            //ValidIssuer = jwtSetting.Issuer,                    //使用者
+            //    ValidAudience = jwtSetting.Audience,                //颁发者
+            //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.SecreKey)) //加密方式
+            //});
+
+            //连接数据库服务加入DI容器
+            services.AddDbContext<ApplicationDbContext>(option =>
             {
-            ValidIssuer = jwtSetting.Issuer,                    //使用者
-                ValidAudience = jwtSetting.Audience,                //颁发者
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.SecreKey)) //加密方式
+                option.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            //将Identity服务加入DI容器
+            services.AddIdentity<ApplicationUser, ApplicationUserRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+            //设置注册密码的规则
+            services.Configure<IdentityOptions>(options =>
+            {
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(config =>
+            {
+                                config.LoginPath = "/Account/Login";    //未认证导向登陆的页面，默认为/Account/Login
+                                config.Cookie.Name = "lmccookie";           //设置一个cookieName
             });
             services.AddMvc();
         }
