@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickStartIdentityServer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickStartIdentityMVC", "QuickStartIdentityMVC\QuickStartIdentityMVC.csproj", "{FE33B809-8F00-4EBA-9870-46A849BABC13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer", "AuthServer\AuthServer.csproj", "{C573E64E-23A1-4842-ACA9-D07582A9D59E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE33B809-8F00-4EBA-9870-46A849BABC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C573E64E-23A1-4842-ACA9-D07582A9D59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C573E64E-23A1-4842-ACA9-D07582A9D59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C573E64E-23A1-4842-ACA9-D07582A9D59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C573E64E-23A1-4842-ACA9-D07582A9D59E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
