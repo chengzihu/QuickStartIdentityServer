@@ -1,6 +1,6 @@
 using System;
 
-namespace QuickStartIdentityMVC.Models
+namespace MvcClient.Models
 {
     public class ErrorViewModel
     {
